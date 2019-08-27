@@ -1,11 +1,16 @@
-#coding=utf-8
+# coding=utf-8
 from selenium import webdriver
-import unittest,time
+import unittest
+import time
+
 
 class Youdao(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Firefox()
+        # cls.driver = webdriver.Firefox()  # 不开启静默模式
+        options = webdriver.FirefoxOptions()
+        options.add_argument('--headless')
+        cls.driver = webdriver.Firefox(options=options)  # 开启静默模式
         cls.driver.implicitly_wait(30)
         cls.base_url = "http://www.youdao.com"
         cls.verificationErrors = []
@@ -27,7 +32,7 @@ class Youdao(unittest.TestCase):
     def cleanup(self):
         pass
 
-    #有道搜索用例
+    # 有道搜索用例
     def test_youdao_search(self):
         u"""中译英：成功"""
         driver = self.driver
@@ -40,6 +45,7 @@ class Youdao(unittest.TestCase):
         self.add_img()
         driver.find_element_by_xpath("/html/body/div[7]/i/a[1]").click()
         self.add_img()
+
 
 if __name__ == "__main__":
     unittest.main()

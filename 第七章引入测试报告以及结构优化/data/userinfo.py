@@ -1,7 +1,7 @@
 
-def fun(un = 15918860373,pw = 'www07142026'):
+def fun(un=15918860373, pw='www07142026'):
     print("success reader username and password")
-    return un,pw
+    return un, pw
 
 
 '''

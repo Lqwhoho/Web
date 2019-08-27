@@ -1,8 +1,10 @@
-#coding=utf-8
+# coding=utf-8
 from selenium.webdriver.common.action_chains import ActionChains
 import time
 
-#退出登录
+# 退出登录
+
+
 def logout(self):
     driver = self.driver
     driver.maximize_window()

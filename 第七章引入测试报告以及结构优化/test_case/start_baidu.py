@@ -1,7 +1,9 @@
-#coding=utf-8
+# coding=utf-8
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
-import time,unittest
+import time
+import unittest
+
 
 class Baidu(unittest.TestCase):
     @classmethod
@@ -26,7 +28,10 @@ class Baidu(unittest.TestCase):
     def setUp(self):
         self.imgs = []
         self.addCleanup(self.cleanup)
-        self.driver = webdriver.Firefox()
+        # self.driver = webdriver.Firefox()  # 不开启静默模式
+        options = webdriver.FirefoxOptions()
+        options.add_argument('--headless')
+        self.driver = webdriver.Firefox(options=options)    # 开启静默模式
         self.driver.implicitly_wait(30)
         self.base_url = "http://www.baidu.com"
         self.verificationErrors = []
@@ -39,11 +44,11 @@ class Baidu(unittest.TestCase):
     def cleanup(self):
         pass
 
-    #百度设置用例
+    # 百度设置用例
     def test02_baidu_set(self):
         u"""设置页面搜索结果为50条"""
         driver = self.driver
-        #进入搜索设置页
+        # 进入搜索设置页
         driver.get(self.base_url+"/")
         self.add_img()
         time.sleep(4)
@@ -53,13 +58,13 @@ class Baidu(unittest.TestCase):
         driver.find_element_by_class_name("setpref").click()
         self.add_img()
 
-        #设置每页搜索结果为50条
+        # 设置每页搜索结果为50条
         m = driver.find_element_by_id("nr")
         m.find_element_by_xpath("//option[@value='50']").click()
         time.sleep(2)
         self.add_img()
 
-        #保存设置信息
+        # 保存设置信息
         driver.find_element_by_class_name("prefpanelgo").click()
         time.sleep(1)
         self.add_img()
@@ -67,7 +72,7 @@ class Baidu(unittest.TestCase):
         time.sleep(1)
         self.add_img()
 
-    #百度搜索用例
+    # 百度搜索用例
     def test01_baidu_search(self):
         u"""百度搜索"""
         driver = self.driver
@@ -79,7 +84,7 @@ class Baidu(unittest.TestCase):
         time.sleep(2)
         self.add_img()
 
-    #搜索恢复默认设置
+    # 搜索恢复默认设置
     def test03_baidu_reset(self):
         u"""恢复默认设置"""
         driver = self.driver
@@ -101,6 +106,7 @@ class Baidu(unittest.TestCase):
         driver.switch_to.alert.accept()
         time.sleep(2)
         self.add_img()
+
 
 if __name__ == "__main__":
     unittest.main()

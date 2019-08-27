@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+# -*- coding:utf-8 -*-
 import time
 from data import userinfo
 
@@ -12,14 +12,13 @@ pw = source1.read()
 source1.close()
 '''
 
-#通过两个变量，来接收调用函数获得用户名&密码
-us,pw = userinfo.fun()
-#打印两个变量
-print(us,pw)
+# 通过两个变量，来接收调用函数获得用户名&密码
+us, pw = userinfo.fun()
+# 打印两个变量
+print(us, pw)
 
 
-
-#登录模块(函数)
+# 登录模块(函数)
 def logon(self):
     driver = self.driver
     driver.maximize_window()

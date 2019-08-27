@@ -1,9 +1,10 @@
-#coding = utf-8
+# coding = utf-8
 import sys
 sys.path.append("\test_case")
-from test_case import *
 
-#用例文件列表
+# 用例文件列表
+
+
 def caselist():
     alltestname = [
         baidu.Baidu,
