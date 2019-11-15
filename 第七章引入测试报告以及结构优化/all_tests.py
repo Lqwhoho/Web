@@ -32,8 +32,8 @@ def sentmail(file_new):
     # 连接SMTP服务器，此处用的是126的SMTP服务器
     smtp.connect('smtp.126.com')
     # 用户名密码
-    smtp.login('dansuper@126.com','qq07142026')   # 此密码是客户端授权登录密码
-    smtp.sendmail(mail_from,mail_to,msg.as_string())
+    smtp.login('dansuper@126.com', 'qq07142026')   # 此密码是客户端授权登录密码
+    smtp.sendmail(mail_from, mail_to ,msg.as_string())
     smtp.quit()
     print('email has send out!')
 
@@ -75,7 +75,7 @@ def creatsuitel():
 testunit = unittest.TestSuite()
 
 # 获取时间
-now = time.strftime("%Y-%m-%d_%H_%M_%S",time.localtime(time.time()))
+now = time.strftime("%Y-%m-%d_%H_%M_%S", time.localtime(time.time()))
 
 
 # #将测试用例加入到测试容器(套件)中
@@ -95,7 +95,7 @@ alltestnames = creatsuitel()
 
 # 定义报告存放路径，支持相对路径,把当前时间加到报告中
 report_path = "E:\\Python脚本\\Web\\Report\\"+now+'result.html'
-fp = open(report_path,'wb')
+fp = open(report_path, 'wb')
 
 # 定义测试报告
 runner = HTMLTestRunner.HTMLTestRunner(

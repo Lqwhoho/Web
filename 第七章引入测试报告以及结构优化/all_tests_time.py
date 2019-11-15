@@ -2,20 +2,22 @@
 import unittest
 import HTMLTestRunner_cn
 import time
+import os
 
-
-listaa = "E:\\Python脚本\\Web\\第七章引入测试报告以及结构优化\\test_case"    # 定义测试集所在文件夹
+test_case_path = os.path.abspath('.\\test_case')  # 定义测试集所在文件夹
+print(test_case_path)
+# test_case_path = "E:\\Python脚本\\Web\\第七章引入测试报告以及结构优化\\test_case"    # 定义测试集所在文件夹
 # pattern='start*.py' 规定测试集文件开头命名为start，也可以是pattern='start*.py'
 # discover方法找到path 目录下所有文件到的测试用例组装到测试套件
 # 因此可以直接通过run()方法执行discover
-discover = unittest.defaultTestLoader.discover(listaa, pattern='start_*.py', top_level_dir=None)
+discover = unittest.defaultTestLoader.discover(test_case_path, pattern='start_*.py', top_level_dir=None)
 runner = unittest.TextTestRunner
 
 '''
 def creatsuitel():
     testunit = unittest.TestSuite()
     # discover方法定义
-    discover = unittest.defaultTestLoader.discover(listaa,
+    discover = unittest.defaultTestLoader.discover(test_case_path,
                                                    pattern='start_*.py',
                                                    top_level_dir=None
                                                    )
@@ -36,10 +38,14 @@ alltestnames = creatsuitel()
 
 
 # 获取时间
-now = time.strftime("%Y-%m-%d_%H_%M_%S", time.localtime(time.time()))
+now = time.strftime("\\%Y-%m-%d_%H_%M_%S", time.localtime(time.time()))
 
 # 定义报告存放路径，支持相对路径,把当前时间加到报告中
-report_path = "E:\\Python脚本\\Web\\Report\\"+now+'result.html'
+d = os.path.abspath('..\\Report')
+print(d)
+# report_path = "E:\\Python脚本\\Web\\Report\\"+now+'result.html'
+report_path = d + now + 'result.html'
+print(report_path)
 fp = open(report_path, 'wb')
 
 # 定义测试报告
