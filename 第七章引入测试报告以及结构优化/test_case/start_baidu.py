@@ -29,9 +29,10 @@ class Baidu(unittest.TestCase):
         self.imgs = []
         self.addCleanup(self.cleanup)
         # self.driver = webdriver.Firefox()  # 不开启静默模式
-        options = webdriver.FirefoxOptions()
+        # options = webdriver.FirefoxOptions()
+        options = webdriver.ChromeOptions()
         options.add_argument('--headless')
-        self.driver = webdriver.Firefox(options=options)    # 开启静默模式
+        self.driver = webdriver.Chrome(options=options)    # 开启静默模式
         self.driver.implicitly_wait(30)
         self.base_url = "http://www.baidu.com"
         self.verificationErrors = []

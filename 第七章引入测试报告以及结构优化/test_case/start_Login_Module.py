@@ -11,9 +11,9 @@ class Logon(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         # cls.driver = webdriver.Firefox()  # 不开启静默模式
-        options = webdriver.FirefoxOptions()
+        options = webdriver.ChromeOptions()
         options.add_argument('--headless')
-        cls.driver = webdriver.Firefox(options=options)    # 开启静默模式
+        cls.driver = webdriver.Chrome(options=options)    # 开启静默模式
         cls.driver.implicitly_wait(30)
         cls.base_url = "http://www.zhujiwu.com"
         cls.verificationErrors = []
